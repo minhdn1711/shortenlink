@@ -12,13 +12,11 @@ from app.database import get_db, init_db
 from app.routers import links, uploads
 from app.services import link_service
 from app.utils.mobile_redirect import (
-    detect_app_target,
-    is_in_app_social_browser,
     should_serve_crawler_preview,
     should_use_direct_app_redirect,
 )
 from app.utils.og_html import build_og_preview_html
-from app.utils.redirect_pages import build_password_gate_html, build_tiktok_landing_html
+from app.utils.redirect_pages import build_password_gate_html
 from app.utils.security import verify_password
 
 api_prefix = "/api/links"
@@ -99,16 +97,6 @@ async def redirect_short_link(
         )
 
     await link_service.increment_click_count(db, link)
-
-    # FB in-app browser + TikTok/Shopee: serve landing page thay vì redirect thẳng.
-    # Redirect thẳng → TikTok web tự trigger mở app → FB hiện "Rời khỏi Facebook?".
-    # Landing page cho user chủ động bấm → trải nghiệm rõ ràng hơn.
-    if is_in_app_social_browser(user_agent) and detect_app_target(target_url):
-        return HTMLResponse(
-            content=build_tiktok_landing_html(link, target_url),
-            status_code=200,
-            headers={"Cache-Control": "no-store, no-cache, must-revalidate"},
-        )
 
     if should_use_direct_app_redirect(target_url, user_agent):
         return RedirectResponse(

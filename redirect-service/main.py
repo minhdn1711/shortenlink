@@ -1,4 +1,4 @@
-"""Proxy redirect + ảnh upload → backend. Tunnel phanmemcongnghevip.online → port này."""
+"""Proxy redirect + ảnh upload → backend. Tunnel  → port này."""
 
 import os
 

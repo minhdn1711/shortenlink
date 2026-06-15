@@ -23,7 +23,7 @@ def normalize_domain(domain: str) -> str:
     if not _DOMAIN_PATTERN.match(host):
         raise HTTPException(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-            detail="Invalid domain format. Example: phanmemcongnghevip.online",
+            detail="Invalid domain format. Example: ",
         )
 
     return f"https://{host}"

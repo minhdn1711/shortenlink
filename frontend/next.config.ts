@@ -7,8 +7,6 @@ const nextConfig: NextConfig = {
     "adminphanmemvip.xyz",
     "www.adminphanmemvip.xyz",
     "api.adminphanmemvip.xyz",
-    "phanmemcongnghevip.online",
-    "www.phanmemcongnghevip.online",
   ],
   async rewrites() {
     return [

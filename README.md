@@ -4,11 +4,11 @@
 |---------|--------|------------|
 | Web UI | `adminphanmemvip.xyz` | Next.js **port 3000** |
 | API | `api.adminphanmemvip.xyz` | FastAPI **port 8000** |
-| Link ngắn (redirect) | `phanmemcongnghevip.online/{mã}` | Xem bên dưới |
+| Link ngắn (redirect) | `/{mã}` | Xem bên dưới |
 
-## Vì sao `phanmemcongnghevip.online/qC7sTp` không có gì?
+## Vì sao `/qC7sTp` không có gì?
 
-Tunnel Cloudflare trỏ `phanmemcongnghevip.online` → **port 9004**, nhưng **không có process nào** đang listen port đó → trình duyệt trống / lỗi kết nối.
+Tunnel Cloudflare trỏ `` → **port 9004**, nhưng **không có process nào** đang listen port đó → trình duyệt trống / lỗi kết nối.
 
 **Không cần** chạy Next.js trên 9004. Backend đã có sẵn `GET /{code}` redirect.
 
@@ -18,11 +18,11 @@ Trong Cloudflare Zero Trust, sửa Public Hostname:
 
 | Hostname | Service |
 |----------|---------|
-| `phanmemcongnghevip.online` | `http://127.0.0.1:8000` |
+| `` | `http://127.0.0.1:8000` |
 
 Cùng backend với API, nhưng:
 - `api.adminphanmemvip.xyz` → gọi `/api/links`
-- `phanmemcongnghevip.online/qC7sTp` → gọi `/{code}` → redirect URL gốc
+- `/qC7sTp` → gọi `/{code}` → redirect URL gốc
 
 Chỉ cần backend đang chạy:
 
@@ -47,7 +47,7 @@ cd redirect-service
 .\start.ps1
 ```
 
-Tunnel: `phanmemcongnghevip.online` → `http://127.0.0.1:9004`
+Tunnel: `` → `http://127.0.0.1:9004`
 
 ## Web + API (như cũ)
 

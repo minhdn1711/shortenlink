@@ -23,7 +23,7 @@ export function HomeClient() {
           Rút gọn link
         </h1>
         <p className="mt-2 text-slate-600">
-          Link ngắn: <span className="font-mono font-semibold text-blue-700">phanmemcongnghevip.online/mã-của-bạn</span>
+          Link ngắn: <span className="font-mono font-semibold text-blue-700">/mã-của-bạn</span>
         </p>
       </header>
 

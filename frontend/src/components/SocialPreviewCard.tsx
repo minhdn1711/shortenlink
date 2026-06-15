@@ -10,7 +10,7 @@ function displayHost(link: LinkItem): string {
     const host = new URL(link.short_url).hostname;
     return host.replace(/^www\./, "").toUpperCase();
   } catch {
-    return "PHANMEMCONGNGHEVIP.ONLINE";
+    return "";
   }
 }
 

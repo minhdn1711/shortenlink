@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
 const SHORT_DOMAIN = (
-  process.env.NEXT_PUBLIC_SHORT_DOMAIN ?? "phanmemcongnghevip.online"
+  process.env.NEXT_PUBLIC_SHORT_DOMAIN ?? ""
 ).toLowerCase();
 
 const WEB_ORIGIN = (

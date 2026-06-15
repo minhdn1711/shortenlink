@@ -1,5 +1,5 @@
 export const STATIC_SHORT_DOMAIN =
-  process.env.NEXT_PUBLIC_SHORT_DOMAIN || "phanmemcongnghevip.online";
+  process.env.NEXT_PUBLIC_SHORT_DOMAIN || "";
 
 export const AVAILABLE_DOMAINS = [
   {

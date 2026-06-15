@@ -1,4 +1,4 @@
-# Chạy redirect trên port 9004 (tunnel phanmemcongnghevip.online → localhost:9004)
+# Chạy redirect trên port 9004 (tunnel  → localhost:9004)
 $env:BACKEND_URL = if ($env:BACKEND_URL) { $env:BACKEND_URL } else { "http://127.0.0.1:8000" }
 $env:PORT = if ($env:PORT) { $env:PORT } else { "9004" }
 

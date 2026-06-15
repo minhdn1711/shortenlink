@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Rút gọn link | adminphanmemvip.xyz",
-  description: "Rút gọn link — link ngắn phát hành trên phanmemcongnghevip.online",
+  description: "Rút gọn link — link ngắn phát hành trên ",
 };
 
 export default function RootLayout({

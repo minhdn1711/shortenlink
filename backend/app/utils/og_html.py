@@ -42,7 +42,7 @@ def build_og_preview_html(link: Link, short_url: str, _asset_base: str = "") -> 
         or (f"Mở trên {app_label}" if app_label else title)
     ).strip()
     image = normalize_meta_image_url(link.meta_image_url) or ""
-    site_name = urlparse(short_url).netloc or "phanmemcongnghevip.online"
+    site_name = urlparse(short_url).netloc or ""
     app_link_tags = _build_app_link_tags(link.original_url)
 
     og_image_tags = ""

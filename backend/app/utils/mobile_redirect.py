@@ -53,7 +53,7 @@ APP_RULES: list[dict[str, object]] = [
             "m.tiktok.com",
             "tiktokv.com",
         ),
-        "android_package": "com.ss.android.ugc.trill",
+        "android_package": "com.zhiliaoapp.musically",
         "ios_app_store_id": "835599320",
         "title": "TikTok",
         "color": "#010101",

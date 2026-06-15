@@ -4,9 +4,8 @@ const backendUrl = process.env.BACKEND_URL ?? "http://127.0.0.1:8000";
 
 const nextConfig: NextConfig = {
   allowedDevOrigins: [
-    "adminphanmemvip.xyz",
-    "www.adminphanmemvip.xyz",
-    "api.adminphanmemvip.xyz",
+    "shortlink.miliwebseo.com",
+    "www.shortlink.miliwebseo.com",
   ],
   async rewrites() {
     return [

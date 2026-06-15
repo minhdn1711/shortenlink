@@ -6,7 +6,7 @@ const SHORT_DOMAIN = (
 ).toLowerCase();
 
 const WEB_ORIGIN = (
-  process.env.NEXT_PUBLIC_WEB_ORIGIN ?? "https://adminphanmemvip.xyz"
+  process.env.NEXT_PUBLIC_WEB_ORIGIN ?? "https://shortlink.miliwebseo.com"
 ).replace(/\/$/, "");
 
 const RESERVED = new Set(["api", "_next", "favicon.ico", "robots.txt", "sitemap.xml"]);

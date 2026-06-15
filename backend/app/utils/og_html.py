@@ -1,5 +1,5 @@
 import html
-from urllib.parse import quote, urlparse
+from urllib.parse import urlparse
 
 from app.models import Link
 from app.utils.assets import normalize_meta_image_url
@@ -10,22 +10,8 @@ def _esc(value: str) -> str:
     return html.escape(value, quote=True)
 
 
-def _build_android_intent_url(target_url: str, package: str) -> str:
-    """intent:// URL cho Facebook App Links — FB dùng cái này để mở app trực tiếp, không hỏi."""
-    parsed = urlparse(target_url)
-    path = parsed.path or "/"
-    if parsed.query:
-        path += f"?{parsed.query}"
-    fallback = quote(target_url, safe="")
-    return (
-        f"intent://{parsed.netloc}{path}"
-        f"#Intent;scheme=https;package={package};"
-        f"S.browser_fallback_url={fallback};end"
-    )
-
-
 def _build_app_link_tags(target_url: str) -> str:
-    """Facebook App Links — bấm từ feed mở app trực tiếp, không qua dialog 'Rời khỏi Facebook?'."""
+    """Facebook App Links — giúp bấm từ feed mở app Shopee/TikTok, không qua webview."""
     rule = detect_app_target(target_url)
     if rule is None:
         return ""
@@ -33,19 +19,16 @@ def _build_app_link_tags(target_url: str) -> str:
     title = str(rule["title"])
     android_package = str(rule["android_package"])
     ios_store_id = str(rule["ios_app_store_id"])
-    safe_web = _esc(target_url)
-    # Android: dùng intent:// để FB mở app trực tiếp
-    safe_intent = _esc(_build_android_intent_url(target_url, android_package))
-    # iOS: Universal Link (HTTPS) — iOS tự mở app nếu đã cài, không cần scheme riêng
+    safe_url = _esc(target_url)
 
     return f"""
-  <meta property="al:android:url" content="{safe_intent}" />
+  <meta property="al:android:url" content="{safe_url}" />
   <meta property="al:android:package" content="{_esc(android_package)}" />
   <meta property="al:android:app_name" content="{_esc(title)}" />
-  <meta property="al:ios:url" content="{safe_web}" />
+  <meta property="al:ios:url" content="{safe_url}" />
   <meta property="al:ios:app_store_id" content="{_esc(ios_store_id)}" />
   <meta property="al:ios:app_name" content="{_esc(title)}" />
-  <meta property="al:web:url" content="{safe_web}" />"""
+  <meta property="al:web:url" content="{safe_url}" />"""
 
 
 def build_og_preview_html(link: Link, short_url: str, _asset_base: str = "") -> str:

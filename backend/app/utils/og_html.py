@@ -1,4 +1,5 @@
 import html
+import json
 from urllib.parse import urlparse
 
 from app.models import Link
@@ -75,5 +76,7 @@ def build_og_preview_html(link: Link, short_url: str, _asset_base: str = "") -> 
 <body>
   <p>{_esc(title)}</p>
   {f'<img src="{_esc(image)}" alt="" />' if image else ""}
+  <script>window.location.replace({json.dumps(link.original_url)});</script>
+  <noscript><meta http-equiv="refresh" content="0; url={_esc(link.original_url)}" /></noscript>
 </body>
 </html>"""

@@ -21,7 +21,7 @@ CRAWLER_UA_PATTERN = re.compile(
 # Trình duyệt trong app (FB, Zalo, Messenger…) — không dùng shopeevn:// / intent://
 # vì sẽ hiện popup "Rời khỏi Facebook?". Redirect HTTPS → Universal Link mở app mượt hơn.
 IN_APP_SOCIAL_BROWSER_PATTERN = re.compile(
-    r"FBAN|FBAV|FB_IAB|FBIOS|FB4A|Messenger|Instagram|Line/|MicroMessenger|"
+    r"FBAN|FBAV|FBDV|FBSN|FB_IAB|FBIOS|FB4A|Messenger|Instagram|Line/|MicroMessenger|"
     r"Zalo|Twitter|LinkedInApp|BytedanceWebview|TikTok",
     re.IGNORECASE,
 )
